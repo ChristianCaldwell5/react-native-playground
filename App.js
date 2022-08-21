@@ -14,6 +14,7 @@ const navigator = createStackNavigator(
     initialRouteName: "Home",
     defaultNavigationOptions: {
       title: "App",
+      headerLeft: () => null // disables back navigation button
     },
   }
 );

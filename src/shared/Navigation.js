@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 let navProps;
 
@@ -7,13 +8,20 @@ const Navigation = (screen) => {
     navProps = screen;
     return (
         <View style={styles.navigationContainer}>
-            <Button
-                title="Go to Components Screen"
-                onPress={() => routeToScreen('component')}
-            />
             <TouchableOpacity
+                style={styles.navBtn}
+                onPress={() => routeToScreen('component')}>
+                <MaterialIcons name="apps" size={32} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.navBtn}
+                onPress={() => routeToScreen('home')}>
+                <MaterialIcons name="home" size={32} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.navBtn}
                 onPress={() => routeToScreen('list')}>
-                <Text style={styles.navBtn}>Go To List Screen</Text>
+                <MaterialIcons name="list" size={32} color="black" />
             </TouchableOpacity>
         </View>
     )
@@ -27,6 +35,9 @@ const routeToScreen = (screen) => {
         case 'list':
             navProps.props.navigation.navigate("List")
             break;
+        case 'home':
+            navProps.props.navigation.navigate("Home")
+            break;
         default:
             console.log("OH, what")
     } 
@@ -35,22 +46,25 @@ const routeToScreen = (screen) => {
 const styles = StyleSheet.create({
     navigationContainer: {
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
         bottom: 0,
         width: "100%",
-        padding: 30,
+        //paddingBottom: 30,
+        flex: 1,
         backgroundColor: "white"
     },
     navBtn: {
         fontSize: 20,
-        backgroundColor: "lightgray",
-        padding: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 30,
         borderWidth: 1,
-        borderRadius: 20,
-        overflow: "hidden"
+        overflow: "hidden",
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1
     }
 });
 
