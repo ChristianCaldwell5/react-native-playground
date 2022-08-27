@@ -9,17 +9,20 @@ const Navigation = (screen) => {
     return (
         <View style={styles.navigationContainer}>
             <TouchableOpacity
-                style={styles.navBtn}
+                style={[styles.navBtn,
+                        navProps.props.navigation.state.routeName==="Components" ? styles.active : '']}
                 onPress={() => routeToScreen('component')}>
                 <MaterialIcons name="apps" size={32} color="black" />
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.navBtn}
+                style={[styles.navBtn,
+                    navProps.props.navigation.state.routeName==="Home" ? styles.active : '']}
                 onPress={() => routeToScreen('home')}>
                 <MaterialIcons name="home" size={32} color="black" />
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.navBtn}
+                style={[styles.navBtn,
+                    navProps.props.navigation.state.routeName==="List" ? styles.active : '']}
                 onPress={() => routeToScreen('list')}>
                 <MaterialIcons name="list" size={32} color="black" />
             </TouchableOpacity>
@@ -65,6 +68,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flex: 1
+    },
+    active: {
+        backgroundColor: "lightgray"
     }
 });
 
